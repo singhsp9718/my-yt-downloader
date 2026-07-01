@@ -10,7 +10,8 @@ app.use(express.json());
 const PORT = process.env.PORT || 5000;
 
 // Hamare yt-dlp ka exact location (path)
-const YTDLP_PATH = 'C:\\ytdownloader\\yt-dlp.exe';
+// Is line ko purane path se replace kar do
+const YTDLP_PATH = process.env.RENDER ? 'yt-dlp' : '"C:\\ytdownloader\\yt-dlp.exe"';
 
 // API Route: Video ki details fetch karne ke liye
 app.post('/api/fetch', (req, res) => {

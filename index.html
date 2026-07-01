@@ -112,7 +112,7 @@
 
         try {
             // Hamare Node.js server ko request bhej rha hai
-            const response = await fetch('http://localhost:5000/api/fetch', {
+            const response = await fetch('https://my-yt-downloader-trcd.onrender.com/api/fetch', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ url: link })
