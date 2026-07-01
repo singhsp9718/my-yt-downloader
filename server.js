@@ -9,9 +9,10 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 
+// Render par direct path, local par bina quotes ke sahi path string
 const YTDLP_PATH = process.env.RENDER 
   ? path.join(__dirname, 'yt-dlp') 
-  : '"C:\\ytdownloader\\yt-dlp.exe"';
+  : 'C:\\ytdownloader\\yt-dlp.exe';
 
 // API Route: Video ki details fetch karne ke liye
 app.post('/api/fetch', (req, res) => {
@@ -21,8 +22,8 @@ app.post('/api/fetch', (req, res) => {
         return res.status(400).json({ error: 'URL daalna zaroori hai!' });
     }
 
-    // yt-dlp command jo video ki saari details JSON format mein nikaalegi
-   const command = `"${YTDLP_PATH}" --no-check-certificates --prefer-insecure --dump-json "${url}"`;
+    // Yahan se humne exact binary path ko bina extra internal quotes ke pass kiya hai
+    const command = `"${YTDLP_PATH}" --no-check-certificates --prefer-insecure --dump-json "${url}"`;
 
     exec(command, (error, stdout, stderr) => {
         if (error) {
