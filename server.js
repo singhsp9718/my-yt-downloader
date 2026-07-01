@@ -9,9 +9,6 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 
-// Hamare yt-dlp ka exact location (path)
-const path = require('path');
-
 const YTDLP_PATH = process.env.RENDER 
   ? path.join(__dirname, 'yt-dlp') 
   : '"C:\\ytdownloader\\yt-dlp.exe"';
