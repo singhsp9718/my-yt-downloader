@@ -23,7 +23,8 @@ app.post('/api/fetch', (req, res) => {
     }
 
     // Yahan se humne exact binary path ko bina extra internal quotes ke pass kiya hai
-    const command = `"${YTDLP_PATH}" --no-check-certificates --prefer-insecure --dump-json "${url}"`;
+    // YouTube ke 429 block aur bot detection ko bypass karne ke liye extra flags
+    const command = `"${YTDLP_PATH}" --no-check-certificates --prefer-insecure --dump-json --extractor-args "youtube:player_client=android" "${url}"`;
 
     exec(command, (error, stdout, stderr) => {
         if (error) {
